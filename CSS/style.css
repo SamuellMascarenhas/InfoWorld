@@ -1,0 +1,460 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    background-color: #000;
+}
+
+.git-ico {
+    fill: re;
+    width: 50px;
+    height: 50px;
+    padding: 3px;
+    border-radius: 50%;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10;
+    transition: all .5s ease;
+}
+
+.git-ico:hover {
+    transform: scale(115%);
+    box-shadow: 2px 2px 11px rgba(0, 0, 0, 0.7);
+    transition: all .3s ease;
+}
+
+
+main {}
+
+header {
+    padding: 15px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo h1 {
+    font-family: 'Archivo Black', sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+
+.busca-pais {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    padding: 5px;
+    max-width: 300px;
+}
+
+#pais-input {
+    background: transparent;
+    flex: 1;
+    border: none;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    color: #fff;
+}
+
+#pais-input::placeholder {
+    color: #fff;
+    font-family: 'Kanit', sans-serif;
+}
+
+
+#buscar-pais-button,
+#voltar-lista-paises-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #fff;
+    margin: 10px;
+}
+
+#buscar-pais-button:hover,
+#voltar-lista-paises-button:hover {
+    transform: scale(110%);
+}
+
+
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.box .logo img {
+    width: 280px;
+}
+
+.box h3 {
+    font-family: 'Poppins', sans-serif;
+    color: #f4f4f4;
+    text-transform: capitalize;
+    font-weight: 100;
+    font-size: 28px;
+}
+
+.spinnerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loader {
+    color: #4a4a4a;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 40px;
+    padding: 10px 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    border-radius: 8px;
+}
+
+.words {
+    overflow: hidden;
+}
+
+.word {
+    text-align: center;
+    display: block;
+    height: 100%;
+    padding-left: 6px;
+    color: #fff;
+    animation: cycle-words 5s infinite;
+    font-family: 'Kanit', sans-serif;
+}
+
+@keyframes cycle-words {
+    10% {
+        -webkit-transform: translateY(-105%);
+        transform: translateY(-105%);
+    }
+
+    25% {
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
+    }
+
+    35% {
+        -webkit-transform: translateY(-205%);
+        transform: translateY(-205%);
+    }
+
+    50% {
+        -webkit-transform: translateY(-200%);
+        transform: translateY(-200%);
+    }
+
+    60% {
+        -webkit-transform: translateY(-305%);
+        transform: translateY(-305%);
+    }
+
+    75% {
+        -webkit-transform: translateY(-300%);
+        transform: translateY(-300%);
+    }
+
+    85% {
+        -webkit-transform: translateY(-405%);
+        transform: translateY(-405%);
+    }
+
+    100% {
+        -webkit-transform: translateY(-400%);
+        transform: translateY(-400%);
+    }
+}
+
+
+
+
+main {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+
+/* Estilo para a lista de países e favoritos */
+.lista-paises,
+.favoritos {
+
+    background: transparent;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    padding: 20px;
+    margin: 10px;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    /* Centraliza o texto */
+}
+
+.lista-paises p,
+span {
+    color: #fff;
+    text-align: center;
+    font-family: 'Kanit', sans-serif;
+    font-weight: 100;
+    text-transform: uppercase;
+}
+
+.favoritos p,
+span {
+    color: #fff;
+    text-align: center;
+    font-family: 'Kanit', sans-serif;
+    font-weight: 100;
+    text-transform: uppercase;
+}
+
+.lista-paises h2,
+.favoritos h2 {
+    text-transform: uppercase;
+    padding: 15px;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.lista {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* Centraliza os elementos */
+    padding: 0;
+}
+
+.lista li {
+    gap: 15px;
+    flex: 0 0 45%;
+    /* Define a largura dos elementos da lista */
+    margin: 10px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.lista li img {
+
+    max-width: 40px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.lista li button {
+    background-color: royalblue;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.lista li button:hover {
+    background-color: #1a9b66;
+}
+
+footer {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+}
+
+.footer-git {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.button-git {
+    text-decoration: none;
+    display: flex;
+    background-color: rgb(24, 23, 23);
+    color: #ffffff;
+    padding: 0.5rem 1.4rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    vertical-align: middle;
+    align-items: center;
+    border-radius: 0.5rem;
+    gap: 0.75rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: .3s ease;
+}
+
+.button-git svg {
+    height: 30px;
+}
+
+.button-git:hover {
+    box-shadow: none;
+    transform: scale(105%);
+    transition: all .3s ease;
+}
+
+/* Consulta de mídia para telas menores (exemplo: smartphones) */
+@media (max-width: 768px) {
+    .git-ico {
+        display: none;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    .busca-pais {
+        margin-top: 15px;
+        max-width: 100%;
+        /* Preenchimento total da largura da tela */
+    }
+
+    #pais-input {
+        max-width: 100%;
+        /* Preenchimento total da largura da tela */
+    }
+
+    #buscar-pais-button,
+    #voltar-lista-paises-button {
+        font-size: 16px;
+        /* Reduz o tamanho da fonte */
+    }
+
+    .lista {
+        flex-direction: column;
+        /* Empilhe os itens verticalmente */
+    }
+
+    main {
+        display: flex;
+        margin: auto;
+        flex-direction: column;
+
+    }
+
+    .lista-paises {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .favoritos {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    ul {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .lista li {
+        flex: 0 0 100%;
+        margin: 10px 0;
+    }
+
+    .lista-paises,
+    .favoritos {
+        padding: 10px;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+    .footer-git {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Consulta de mídia para telas maiores (exemplo: desktops) */
+@media (min-width: 1024px) {
+    nav {
+        flex-direction: row;
+        /* Retorna à direção original do flex */
+    }
+
+    .busca-pais {
+        max-width: 300px;
+        /* Restaura a largura máxima original */
+    }
+
+    #pais-input {
+        max-width: 100%;
+        /* Preenchimento total da largura da tela */
+    }
+
+    #buscar-pais-button,
+    #voltar-lista-paises-button {
+        font-size: 20px;
+        /* Restaura o tamanho da fonte original */
+    }
+
+    .lista {
+        flex-direction: row;
+        /* Restaure o layout em linha para os itens da lista */
+    }
+
+    .lista li {
+        flex: 0 0 calc(50% - 20px);
+        /* Retorne à largura original com espaçamento entre os itens */
+        margin: 10px;
+        /* Restaure a margem entre os itens */
+    }
+
+    .lista-paises,
+    .favoritos {
+        padding: 20px;
+        /* Restaure o preenchimento original */
+        max-height: none;
+        /* Remova a altura máxima */
+        overflow-y: initial;
+        /* Remova a barra de rolagem */
+    }
+}

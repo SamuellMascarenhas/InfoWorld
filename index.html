@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfoWorld - Explore</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="./IMG/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./IMG/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./IMG/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./IMG/favicon/site.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+    <div class="git-ico">
+        <a href="https://github.com/SamuellMascarenhas" target="_blank">
+            <img width="50" height="50" src="https://img.icons8.com/glyph-neue/64/FFFFFF/github.png" alt="github" />
+        </a>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>InfoWorld</h1><img width="24" height="24"
+                    src="https://img.icons8.com/material-outlined/24/ffffff/globe--v1.png" alt="globe--v1" />
+            </div>
+            <div class="busca-pais">
+                <input type="text" id="pais-input" placeholder="Digite o nome do país">
+                <button id="buscar-pais-button"><i class="fas fa-search"></i></button>
+                <button id="voltar-lista-paises-button"><i class="fas fa-arrow-left"></i></button>
+            </div>
+        </nav>
+        <div class="box">
+            <div class="logo">
+                <img src="IMG/logo.jpg" alt="logo.jpeg">
+            </div>
+            <h3>Seu Explore World rápido e fácil!</h3>
+            <div class="spinnerContainer">
+                <div class="loader">
+                    <div class="words">
+                        <span class="word"></span>
+                        <span class="word">Olá, Seja Bem Vindo!</span>
+                        <span class="word">Hello, Welcome!</span>
+                        <span class="word">¡Hola, Bienvenido!</span>
+                        <span class="word">Bonjour, Bienvenue!</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="lista-paises">
+            <h2>Países</h2>
+            <img width="50" height="50" src="https://img.icons8.com/ios/50/ffffff/world.png" alt="world" />
+            <p>Quantidade de países: <span id="totalPaises">0</span></p>
+            <p>Total da população: <span id="totalPopulacao">0</span></p>
+            <ul id="paisesList" class="lista"></ul>
+        </section>
+        <section class="favoritos">
+            <h2>Favoritos</h2>
+            <img width="50" height="50" src="https://img.icons8.com/ios/50/ffffff/add-to-favorites.png"
+                alt="add-to-favorites" />
+            <p>Quantidade de países favoritos: <span id="totalPaisesFavoritos">0</span></p>
+            <p>Total da população favorita: <span id="totalPopulacaoFavoritos">0</span></p>
+            <ul id="favoritosList" class="lista"></ul>
+        </section>
+    </main>
+    <footer>
+        <div class="logo">
+            <h1>InfoWorld</h1><img width="24" height="24"
+                src="https://img.icons8.com/material-outlined/24/ffffff/globe--v1.png" alt="globe--v1" />
+        </div>
+        <div class="footer-git">
+            <h4>2023, InfoWorld - Todos os Direitos reservados:</h4>
+            <a href="https://github.com/SamuellMascarenhas" target="_blank" class="button-git">
+                <img width="30" height="30" src="https://img.icons8.com/glyph-neue/64/FFFFFF/github.png" alt="github" />
+                github.com/SamuellMascarenhas&copy;
+            </a>
+        </div>
+    </footer>
+    <script src="./JS/script.js"></script>
+</body>
+
+</html>
