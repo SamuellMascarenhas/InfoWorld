@@ -10,9 +10,26 @@ const totalPopulacao = document.getElementById('totalPopulacao');
 const totalPaisesFavoritos = document.getElementById('totalPaisesFavoritos');
 const totalPopulacaoFavoritos = document.getElementById('totalPopulacaoFavoritos');
 const voltarPaisesButton = document.getElementById('voltar-lista-paises-button');
+document.getElementById('loading').style.display = 'block';
 
 let todosOsPaises = [];
 let paisesFavoritos = [];
+
+// após a conclusão da solicitação à API, oculte o loader
+fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+        // Processar os dados da API aqui
+
+        // ocultar o loader após a conclusão
+        document.getElementById('loading').style.display = 'none';
+    })
+    .catch(error => {
+        console.error('Erro ao buscar países:', error);
+
+        // em caso de erro esconda/oculta o loader
+        document.getElementById('loading').style.display = 'none';
+    });
 //-----------------------------------------------------------------//
 // inglês para português
 const traducaoPaises = {
