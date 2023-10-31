@@ -34,9 +34,6 @@ body {
     transition: all .3s ease;
 }
 
-
-main {}
-
 header {
     padding: 15px;
 }
@@ -293,6 +290,135 @@ span {
     background-color: #1a9b66;
 }
 
+.filtros {
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#filtro-continente {
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    background: #4b4b4b4f;
+    border: solid 1px #ccc;
+    color: #fff;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+#filtro-continente option {
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    background-color: #000;
+    border-radius: 20px;
+}
+
+#filtro-menor-populacao {
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    position: relative;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1em 1em;
+    display: inline-block;
+    border-radius: 6em;
+    transition: all .2s;
+    border: none;
+    font-family: inherit;
+    font-weight: 500;
+    color: black;
+    background-color: white;
+}
+
+#filtro-menor-populacao:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+#filtro-menor-populacao:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+#filtro-menor-populacao::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+#filtro-menor-populacao::after {
+    background-color: #fff;
+}
+
+#filtro-menor-populacao:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+
+#filtro-maior-populacao {
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    position: relative;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1em 1em;
+    display: inline-block;
+    border-radius: 6em;
+    transition: all .2s;
+    border: none;
+    font-family: inherit;
+    font-weight: 500;
+    color: black;
+    background-color: white;
+}
+
+#filtro-maior-populacao:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+#filtro-maior-populacao:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+#filtro-maior-populacao::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+#filtro-maior-populacao::after {
+    background-color: #fff;
+}
+
+#filtro-maior-populacao:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+
 footer {
     text-align: center;
     font-family: 'Poppins', sans-serif;
@@ -343,6 +469,13 @@ footer {
         display: none;
     }
 
+    .box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
     nav {
         flex-direction: column;
     }
@@ -376,10 +509,24 @@ footer {
 
     }
 
+    .filtros {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+
     .lista-paises {
         display: flex;
         align-items: center;
         flex-direction: column;
+    }
+
+    .lista-paises ul {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin: auto;
     }
 
     .favoritos {
@@ -388,11 +535,7 @@ footer {
         flex-direction: column;
     }
 
-    ul {
-        width: 50%;
-        display: flex;
-        justify-content: center;
-    }
+
 
     .lista li {
         flex: 0 0 100%;
@@ -404,6 +547,15 @@ footer {
         padding: 10px;
         max-height: 200px;
         overflow-y: auto;
+    }
+
+    #filtro-menor-populacao,
+    #filtro-maior-populacao {
+        padding: 5px 10px;
+    }
+
+    footer {
+        margin-top: 25px;
     }
 
     .footer-git {

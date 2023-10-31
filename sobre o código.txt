@@ -1,0 +1,45 @@
+Criei este código em prol de uma aplicação web que permite ao usuário explorar informações sobre países. Vou explicar o código passo a passo:
+
+[1] Definição de constantes e variáveis:
+
+- apiUrl: Uma constante que armazena a URL da API usada para buscar informações sobre países.
+
+- paisInput, filtroContinente, filtroMenorPopulacao, ...: Essas variáveis armazenam elementos HTML com base em seus IDs, como campos de entrada, botões e listas. Esses elementos são usados para interagir com a interface do usuário.
+
+[2] Tradução de nomes de países:
+
+- O objeto traducaoPaises mapeia nomes de países em inglês para seus equivalentes em português. Isso é usado para mostrar nomes traduzidos de países.
+
+[3] Funções:
+- getNomeTraduzido(pais): Recebe um objeto de país e retorna o nome traduzido (do inglês para o português) se estiver disponível no objeto traducaoPaises.
+
+- atualizarPopulacaoEQuantidadeFavoritos(): Atualiza a população total e a quantidade de países na lista de favoritos.
+
+- atualizarPopulacaoEQuantidadePaises(): Atualiza a população total e a quantidade de países na lista principal.
+
+- adicionarAosFavoritos(pais): Adiciona um país à lista de favoritos, remove-o da lista principal e atualiza as estatísticas.
+
+- removerDosFavoritos(pais): Remove um país da lista de favoritos, adiciona-o de volta à lista principal e atualiza as estatísticas.
+
+- filtrarPorContinente(continente): Filtra os países por continente e exibe apenas os países do continente selecionado ou todos os países, dependendo da opção escolhida.
+
+- ordenarPorMenorPopulacao(): Ordena os países por ordem crescente de população.
+
+- ordenarPorMaiorPopulacao(): Ordena os países por ordem decrescente de população.
+
+[4] Event Listeners:
+ - Há diversos event listeners definidos para botões e elementos da interface, como o botão de busca, botão de voltar, seleção de continente e botões de ordenação. Esses listeners respondem a ações do usuário e chamam funções correspondentes para atualizar a interface.
+
+[5] Função buscarPaises():
+- Essa função é assíncrona e busca dados sobre países na API especificada. Ela mapeia os dados recebidos para um formato mais conveniente e chama a função atualizarListaPaises() para exibir a lista de países na interface.
+
+[6] Função atualizarListaPaises(paises): 
+- Essa função atualiza a lista de países na interface, adicionando botões "Favorito" a cada país na lista.
+
+[7] Função atualizarListaFavoritos(): 
+-  Essa função atualiza a lista de países favoritos na interface, adicionando botões "Remover" a cada país na lista de favoritos.
+
+[8] função buscarPaises():
+- é chamada para iniciar o processo de busca de países assim que a página é carregada.
+
+Resumidamente, o código permite ao usuário buscar, classificar, filtrar e adicionar países à lista de favoritos, exibindo informações detalhadas sobre eles. Ele usa uma API de países para obter os dados e, em seguida, atualiza a interface de acordo com as interações do usuário.

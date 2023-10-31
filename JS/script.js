@@ -1,6 +1,8 @@
 const apiUrl = 'https://restcountries.com/v2/all';
 const paisInput = document.getElementById('pais-input');
-const buscarPaisButton = document.getElementById('buscar-pais-button');
+const filtroContinente = document.getElementById('filtro-continente');
+const filtroMenorPopulacao = document.getElementById('filtro-menor-populacao');
+const filtroMaiorPopulacao = document.getElementById('filtro-maior-populacao');
 const paisesList = document.getElementById('paisesList');
 const favoritosList = document.getElementById('favoritosList');
 const totalPaises = document.getElementById('totalPaises');
@@ -11,46 +13,46 @@ const voltarPaisesButton = document.getElementById('voltar-lista-paises-button')
 
 let todosOsPaises = [];
 let paisesFavoritos = [];
-
+//-----------------------------------------------------------------//
 // inglês para português
 const traducaoPaises = {
     'Brazil': 'Brasil',
-
 };
 
-// obter o nome traduzido do país
+// retornar nome traduzido do país
 function getNomeTraduzido(pais) {
     return traducaoPaises[pais.nome] || pais.nome;
 }
+//-------------------------------------------------------------------//
 
-// Atualiza a população e a quantidade de países aba de favoritos
+// atualiza a população e quantidade de países na aba de favoritos
 function atualizarPopulacaoEQuantidadeFavoritos() {
     totalPopulacaoFavoritos.textContent = paisesFavoritos.reduce((total, pais) => total + pais.populacao, 0);
     totalPaisesFavoritos.textContent = paisesFavoritos.length;
 }
-
-// Atualiza a população e a quantidade de países aba de países
+//-------------------------------------------------------------------//
+// atualiza a população e quantidade de países na aba de países
 function atualizarPopulacaoEQuantidadePaises() {
     const totalPopulacaoPaises = todosOsPaises.reduce((total, pais) => total + pais.populacao, 0);
     const quantidadePaises = todosOsPaises.length;
     totalPaises.textContent = quantidadePaises;
     totalPopulacao.textContent = totalPopulacaoPaises;
 }
-
-// Add um país aos favoritos
+//-------------------------------------------------------------------//
+// adiciona um país aos favoritos
 function adicionarAosFavoritos(pais) {
     const indice = todosOsPaises.findIndex(p => p.nome === pais.nome);
     if (indice !== -1) {
         todosOsPaises.splice(indice, 1);
-        atualizarListaPaises(); // Atualiza a lista de países
+        atualizarListaPaises();
         paisesFavoritos.push(pais);
         atualizarListaFavoritos();
-        atualizarPopulacaoEQuantidadeFavoritos(); // Atualiza a população e quantidade na aba de favoritos
-        atualizarPopulacaoEQuantidadePaises(); // Atualiza a população e quantidade na aba de países
+        atualizarPopulacaoEQuantidadeFavoritos();
+        atualizarPopulacaoEQuantidadePaises();
     }
 }
-
-// Remove um país dos favoritos
+//-------------------------------------------------------------------//
+// remove um país dos favoritos
 function removerDosFavoritos(pais) {
     const indice = paisesFavoritos.findIndex(p => p.nome === pais.nome);
     if (indice !== -1) {
@@ -58,23 +60,44 @@ function removerDosFavoritos(pais) {
         atualizarListaFavoritos();
         todosOsPaises.push(pais);
         atualizarListaPaises();
-        atualizarPopulacaoEQuantidadeFavoritos(); // Atualiza a população e quantidade na aba de favoritos
-        atualizarPopulacaoEQuantidadePaises(); // Atualiza a população e quantidade na aba de países
+        atualizarPopulacaoEQuantidadeFavoritos();
+        atualizarPopulacaoEQuantidadePaises();
     }
 }
+//-------------------------------------------------------------------//
+// filtra os países com base no continente selecionado
+function filtrarPorContinente(continente) {
+    if (continente === 'Todos') {
+        atualizarListaPaises(); // Selecione "Todos", exiba todos os países
+    } else {
+        const paisesFiltrados = todosOsPaises.filter(pais => pais.continente === continente);
+        atualizarListaPaises(paisesFiltrados);
+    }
+}
+//-------------------------------------------------------------------//
+// filtra os países por menor população
+function ordenarPorMenorPopulacao() {
+    const paisesOrdenados = [...todosOsPaises];
+    paisesOrdenados.sort((a, b) => a.populacao - b.populacao);
+    atualizarListaPaises(paisesOrdenados);
+}
 
+// filtra os países por maior população
+function ordenarPorMaiorPopulacao() {
+    const paisesOrdenados = [...todosOsPaises];
+    paisesOrdenados.sort((a, b) => b.populacao - a.populacao);
+    atualizarListaPaises(paisesOrdenados);
+}
+//-------------------------------------------------------------------//
 // Event listener para o botão "Buscar"
-buscarPaisButton.addEventListener('click', () => {
+document.getElementById('buscar-pais-button').addEventListener('click', () => {
     const nomePais = paisInput.value;
 
-    // Encontre o país nos dados
     const pais = todosOsPaises.find(pais => pais.nome.toLowerCase() === nomePais.toLowerCase());
 
     if (pais) {
-        // Limpe a lista anterior
         paisesList.innerHTML = '';
 
-        // Crie um novo item de lista com informações do país
         const li = document.createElement('li');
         const nomeTraduzido = getNomeTraduzido(pais);
         li.innerHTML = `<strong>${nomeTraduzido}</strong> <img src="${pais.bandeira}" width="20"> População: ${pais.populacao}`;
@@ -84,22 +107,30 @@ buscarPaisButton.addEventListener('click', () => {
         li.appendChild(botaoAdicionar);
         paisesList.appendChild(li);
     } else {
-        // Se o país não for encontrado, exiba uma mensagem de erro
         paisesList.innerHTML = 'País não encontrado';
     }
 });
-
+//-------------------------------------------------------------------//
 // Event listener para o botão "Voltar"
 voltarPaisesButton.addEventListener('click', () => {
-    // Limpe a entrada de texto
     paisInput.value = '';
-
-    // Exiba a lista completa de países novamente
     paisesList.innerHTML = '';
     atualizarListaPaises();
 });
 
-// buscar dados dos países na API
+filtroContinente.addEventListener('change', () => {
+    const selectedContinente = filtroContinente.value;
+    filtrarPorContinente(selectedContinente);
+});
+
+filtroMenorPopulacao.addEventListener('click', () => {
+    ordenarPorMenorPopulacao();
+});
+
+filtroMaiorPopulacao.addEventListener('click', () => {
+    ordenarPorMaiorPopulacao();
+});
+
 async function buscarPaises() {
     try {
         const response = await fetch(apiUrl);
@@ -109,6 +140,7 @@ async function buscarPaises() {
             nome: pais.name,
             bandeira: pais.flags.png,
             populacao: pais.population,
+            continente: pais.region,
         }));
 
         atualizarListaPaises();
@@ -116,12 +148,10 @@ async function buscarPaises() {
         console.error('Erro ao buscar países:', erro);
     }
 }
-
-// atualizar a lista de países
-function atualizarListaPaises() {
-    todosOsPaises.sort((a, b) => a.nome.localeCompare(b.nome));
+//-------------------------------------------------------------------//
+function atualizarListaPaises(paises = todosOsPaises) {
     paisesList.innerHTML = '';
-    todosOsPaises.forEach(pais => {
+    paises.forEach(pais => {
         const li = document.createElement('li');
         const nomeTraduzido = getNomeTraduzido(pais);
         li.innerHTML = `<strong>${nomeTraduzido}</strong> <img src="${pais.bandeira}" width="20"> População: ${pais.populacao}`;
@@ -132,12 +162,10 @@ function atualizarListaPaises() {
         paisesList.appendChild(li);
     });
 
-    atualizarPopulacaoEQuantidadePaises(); // Atualiza a população e quantidade na aba de países
+    atualizarPopulacaoEQuantidadePaises();
 }
-
-// atualizar a lista de favoritos
+//-------------------------------------------------------------------//
 function atualizarListaFavoritos() {
-    paisesFavoritos.sort((a, b) => a.nome.localeCompare(b.nome));
     favoritosList.innerHTML = '';
     paisesFavoritos.forEach(pais => {
         const li = document.createElement('li');
@@ -150,8 +178,7 @@ function atualizarListaFavoritos() {
         favoritosList.appendChild(li);
     });
 
-    atualizarPopulacaoEQuantidadeFavoritos(); // Atualiza a população e quantidade na aba de favoritos
+    atualizarPopulacaoEQuantidadeFavoritos();
 }
-
-// Inicializa a aplicação buscando os países
+//-------------------------------------------------------------------//
 buscarPaises();

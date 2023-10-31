@@ -23,8 +23,9 @@
     <header>
         <nav>
             <div class="logo">
-                <h1>InfoWorld</h1><img width="24" height="24"
-                    src="https://img.icons8.com/material-outlined/24/ffffff/globe--v1.png" alt="globe--v1" />
+                <h1>InfoWorld</h1>
+                <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/ffffff/globe--v1.png"
+                    alt="globe--v1" />
             </div>
             <div class="busca-pais">
                 <input type="text" id="pais-input" placeholder="Digite o nome do país">
@@ -42,7 +43,7 @@
                     <div class="words">
                         <span class="word"></span>
                         <span class="word">Olá, Seja Bem Vindo!</span>
-                        <span class="word">Hello, Welcome!</span>
+                        <span class "word">Hello, Welcome!</span>
                         <span class="word">¡Hola, Bienvenido!</span>
                         <span class="word">Bonjour, Bienvenue!</span>
                     </div>
@@ -56,6 +57,18 @@
             <img width="50" height="50" src="https://img.icons8.com/ios/50/ffffff/world.png" alt="world" />
             <p>Quantidade de países: <span id="totalPaises">0</span></p>
             <p>Total da população: <span id="totalPopulacao">0</span></p>
+            <div class="filtros">
+                <select id="filtro-continente">
+                    <option value="Todos">Todos</option>
+                    <option value="Africa">África</option>
+                    <option value="Americas">Américas</option>
+                    <option value="Asia">Ásia</option>
+                    <option value="Europe">Europa</option>
+                    <option value="Oceania">Oceania</option>
+                </select>
+                <button id="filtro-menor-populacao">Menor População</button>
+                <button id="filtro-maior-populacao">Maior População</button>
+            </div>
             <ul id="paisesList" class="lista"></ul>
         </section>
         <section class="favoritos">
@@ -69,8 +82,9 @@
     </main>
     <footer>
         <div class="logo">
-            <h1>InfoWorld</h1><img width="24" height="24"
-                src="https://img.icons8.com/material-outlined/24/ffffff/globe--v1.png" alt="globe--v1" />
+            <h1>InfoWorld</h1>
+            <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/ffffff/globe--v1.png"
+                alt="globe--v1" />
         </div>
         <div class="footer-git">
             <h4>2023, InfoWorld - Todos os Direitos reservados:</h4>
